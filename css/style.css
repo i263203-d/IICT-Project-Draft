@@ -1,0 +1,995 @@
+/* ==========================================================================
+   DEOSAI EXPEDITIONS - High-Contrast Master Design System
+   WCAG AAA Compliant & Razor-Sharp Legibility Across All 15 Pages
+   ========================================================================== */
+
+:root {
+  /* High-Contrast Light Theme Palette */
+  --bg-page: #F8FAFC;              /* Clean Glacier White */
+  --bg-surface: #FFFFFF;           /* Crisp Pure White Surface */
+  --bg-subtle: #F1F5F9;            /* Soft Alpine Mist */
+  
+  --color-primary: #047857;        /* Deep Karakoram Pine */
+  --color-primary-hover: #065F46;
+  --color-accent: #0284C7;         /* Glacial Lake Cyan */
+  --color-gold: #D97706;           /* Mountain Sun Amber */
+
+  /* Text Contrast - Strictly High Contrast (Never Invisible) */
+  --text-main: #0F172A;            /* Deep Jet Slate - Maximum Legibility */
+  --text-body: #334155;            /* Solid Dark Slate for paragraphs */
+  --text-muted: #64748B;           /* Legible secondary slate */
+  --text-inverse: #FFFFFF;         /* Crisp White for Dark/Hero Overlays */
+
+  --border-light: #E2E8F0;
+  --border-medium: #CBD5E1;
+  --border-primary: rgba(4, 120, 87, 0.3);
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 10px 25px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
+
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* Base Reset & Text Legibility */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+p {
+  color: var(--text-body);
+  margin-bottom: 1rem;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-pine {
+  color: var(--color-primary) !important;
+}
+
+.text-amber {
+  color: var(--color-gold) !important;
+}
+
+/* ==========================================================================
+   GLOBAL FIX: OVERRIDE ANY ACCIDENTAL WHITE-ON-WHITE TEXT
+   Ensures text is NEVER invisible on light sections
+   ========================================================================== */
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) h1,
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) h2,
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) h3,
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) h4,
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) h5,
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) h6 {
+  color: var(--text-main) !important;
+}
+
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) p,
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) li,
+section:not(.gowander-hero):not(.inner-page-header):not(.footer-clean):not(.footer-deosai) span:not(.badge):not(.btn) {
+  color: var(--text-body);
+}
+
+/* Aggressive Failsafe: Prevent text-white from causing invisible text on light backgrounds */
+body:not(.gowander-hero) .container .text-white:not(.inner-page-header *):not(.footer-clean *):not(.badge):not(.btn):not(.btn *):not(.output-price-box *):not(.curved-card *) {
+  color: #0F172A !important;
+}
+body:not(.gowander-hero) .container .text-light:not(.inner-page-header *):not(.footer-clean *):not(.badge):not(.btn) {
+  color: #334155 !important;
+}
+body:not(.gowander-hero) .container .text-white-50 {
+  color: #64748B !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ==========================================================================
+   NAVIGATION (Solid High-Contrast Navbar Across All Pages)
+   ========================================================================== */
+.top-contact-strip,
+.top-notice-bar {
+  background: #064E3B !important;
+  color: #E2E8F0 !important;
+  font-size: 0.82rem;
+  padding: 6px 0;
+  font-weight: 500;
+}
+
+.top-contact-strip a,
+.top-notice-bar a {
+  color: #A7F3D0 !important;
+  text-decoration: none;
+}
+
+.navbar,
+.navbar-light,
+.navbar-dark,
+.navbar-alpine,
+.navbar-deosai {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  padding: 0.85rem 0 !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06) !important;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-title-alpine,
+.brand-text-main {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  color: #064E3B !important;
+  line-height: 1;
+}
+
+.brand-sub-alpine,
+.brand-text-sub {
+  display: block;
+  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.22em;
+  color: #059669 !important;
+  margin-top: 3px;
+  font-weight: 700;
+}
+
+/* Navbar Links: Guaranteed High-Contrast Jet Slate Across All Configurations */
+.navbar .nav-link,
+.navbar-dark .navbar-nav .nav-link,
+.navbar-light .navbar-nav .nav-link,
+.navbar-alpine .navbar-nav .nav-link,
+.navbar-deosai .navbar-nav .nav-link,
+.navbar-nav .nav-link,
+.nav-link-alpine,
+.nav-link-deosai {
+  color: #0F172A !important;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.5rem 0.95rem !important;
+  transition: var(--transition-fast);
+  border-radius: 8px;
+  opacity: 1 !important;
+}
+
+.navbar .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-alpine .navbar-nav .nav-link:hover,
+.navbar-deosai .navbar-nav .nav-link:hover,
+.navbar .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-alpine .navbar-nav .nav-link.active,
+.navbar-deosai .navbar-nav .nav-link.active,
+.navbar-nav .nav-link.active,
+.nav-link-alpine:hover,
+.nav-link-alpine.active,
+.nav-link-deosai:hover,
+.nav-link-deosai.active {
+  color: #047857 !important;
+  background: rgba(4, 120, 87, 0.08) !important;
+}
+
+.navbar-toggler {
+  border: 1px solid var(--border-medium) !important;
+  padding: 0.35rem 0.65rem;
+}
+.navbar-toggler-icon {
+  filter: invert(0.2) !important;
+}
+
+/* Currency Switcher Pill */
+.curr-switch-box,
+.currency-pill-box {
+  background: #F1F5F9 !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 30px;
+  padding: 3px;
+  display: inline-flex;
+}
+
+.curr-pill-btn,
+.curr-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted) !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.curr-pill-btn.active,
+.curr-btn.active {
+  background: #047857 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 6px rgba(4, 120, 87, 0.3) !important;
+}
+
+/* Primary Buttons */
+.btn-pine,
+.btn-emerald {
+  background: #047857 !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 30px;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 14px rgba(4, 120, 87, 0.25);
+}
+
+.btn-pine:hover,
+.btn-emerald:hover {
+  background: #065F46 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(4, 120, 87, 0.35);
+}
+
+.btn-pine-outline,
+.btn-emerald-outline {
+  background: #FFFFFF !important;
+  color: #047857 !important;
+  border: 1.5px solid #047857 !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+.btn-pine-outline:hover,
+.btn-emerald-outline:hover {
+  background: rgba(4, 120, 87, 0.08) !important;
+  color: #065F46 !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   THE GOWANDER-STYLE ARCHED CAROUSEL HERO SECTION
+   ========================================================================== */
+.gowander-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 90px 0 35px 0;
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
+.hero-bg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 1.2s ease;
+  transform: scale(1.05);
+}
+
+.hero-bg-layer.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.25) 50%, rgba(15, 23, 42, 0.85) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-text-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title-giant {
+  font-size: clamp(3rem, 6.5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #FFFFFF !important;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.hero-desc-text {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.95) !important;
+  max-width: 540px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+}
+
+.hero-meta-badge {
+  position: relative;
+  z-index: 2;
+  text-align: end;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  padding: 14px 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+}
+
+.hero-meta-stars {
+  color: #FBBF24;
+  font-size: 1rem;
+}
+
+.hero-meta-location {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 4px;
+}
+
+/* The Curved Carousel Track */
+.arched-carousel-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  user-select: none;
+}
+
+.arched-carousel-track {
+  position: relative;
+  width: 900px;
+  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation Arrow Controls */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 25;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-nav-btn:hover {
+  background: #047857;
+  border-color: #34D399;
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 10px 25px rgba(4, 120, 87, 0.6);
+}
+
+.carousel-nav-btn.prev-btn {
+  left: calc(50% - 460px);
+}
+
+.carousel-nav-btn.next-btn {
+  right: calc(50% - 460px);
+}
+
+.curved-card {
+  position: absolute;
+  width: 175px;
+  height: 240px;
+  border-radius: 22px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0F172A;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center bottom;
+}
+
+.curved-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.curved-card:hover img {
+  transform: scale(1.08);
+}
+
+.curved-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, transparent 40%, rgba(0, 0, 0, 0.88) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  color: #FFFFFF;
+}
+
+.curved-card-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  margin: 0;
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.curved-card-alt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #A7F3D0;
+  font-weight: 600;
+}
+
+/* Enter Valley Pill Badge on Active Card */
+.curved-card .enter-valley-badge {
+  display: none;
+  background: #047857;
+  color: #FFFFFF;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-top: 8px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-shadow: 0 4px 14px rgba(4, 120, 87, 0.5);
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.curved-card .enter-valley-badge i {
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+}
+
+/* Positions Along the Smiling Arc */
+.curved-card.slot-far-left {
+  transform: translate(-300px, 45px) rotate(-18deg) scale(0.82);
+  z-index: 2;
+  opacity: 0.65;
+  filter: brightness(0.75);
+}
+
+.curved-card.slot-left {
+  transform: translate(-150px, 15px) rotate(-9deg) scale(0.92);
+  z-index: 5;
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
+
+.curved-card.slot-center {
+  transform: translate(0px, -8px) rotate(0deg) scale(1.18);
+  z-index: 15;
+  opacity: 1;
+  filter: brightness(1.05);
+  border: 3px solid #34D399;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(52, 211, 153, 0.45);
+}
+
+.curved-card.slot-center .enter-valley-badge {
+  display: inline-flex;
+  animation: pulseGlow 2.5s infinite;
+}
+
+.curved-card.slot-center:hover {
+  transform: translate(0px, -15px) rotate(0deg) scale(1.22);
+  border-color: #6EE7B7;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(52, 211, 153, 0.7);
+}
+
+.curved-card.slot-center:hover .enter-valley-badge {
+  background: #059669;
+  transform: scale(1.06);
+}
+
+.curved-card.slot-center:hover .enter-valley-badge i {
+  transform: translateX(3px);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(52, 211, 153, 0);
+  }
+}
+
+.curved-card.slot-right {
+  transform: translate(150px, 15px) rotate(9deg) scale(0.92);
+  z-index: 5;
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
+
+.curved-card.slot-far-right {
+  transform: translate(300px, 45px) rotate(18deg) scale(0.82);
+  z-index: 2;
+  opacity: 0.65;
+  filter: brightness(0.75);
+}
+
+.curved-card.slot-hidden {
+  transform: translate(0, 100px) scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   CARDS & CONTAINERS (High-Contrast Clean White Surfaces)
+   ========================================================================== */
+.clean-white-card,
+.deosai-card,
+.tour-catalog-card {
+  background: #FFFFFF !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+
+.clean-white-card:hover,
+.deosai-card:hover,
+.tour-catalog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-medium) !important;
+}
+
+.package-card-img-wrap,
+.tour-img-wrapper {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.package-card-img-wrap img,
+.tour-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.badge-tag-amber,
+.tour-badge-pill {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #FFFBEB !important;
+  color: #B45309 !important;
+  border: 1px solid #FDE68A !important;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   INNER PAGE HEADERS (Distinctive Themed Banners with White Headers)
+   ========================================================================== */
+.inner-page-header {
+  position: relative;
+  padding: 70px 0 45px 0;
+  background: linear-gradient(135deg, #064E3B 0%, #022C22 100%);
+  color: #FFFFFF !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inner-page-header h1 {
+  color: #FFFFFF !important;
+}
+
+.inner-page-header p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.breadcrumb-custom {
+  font-size: 0.85rem;
+}
+
+.breadcrumb-custom a {
+  color: #A7F3D0 !important;
+  text-decoration: none;
+}
+
+.breadcrumb-custom .active {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* ==========================================================================
+   UNIQUE VALLEY THEME ACCENTS FOR DESTINATION PAGES
+   ========================================================================== */
+/* Hunza Page Accent: Apricot Gold & Turquoise */
+body.theme-hunza .inner-page-header {
+  background: linear-gradient(135deg, #78350F 0%, #064E3B 100%) !important;
+}
+body.theme-hunza .btn-pine {
+  background: #B45309 !important;
+}
+body.theme-hunza .btn-pine:hover {
+  background: #92400E !important;
+}
+
+/* Skardu & Deosai Page Accent: Deep Sapphire & Sand Dune */
+body.theme-skardu .inner-page-header {
+  background: linear-gradient(135deg, #1E3A8A 0%, #064E3B 100%) !important;
+}
+body.theme-skardu .btn-pine {
+  background: #1E3A8A !important;
+}
+body.theme-skardu .btn-pine:hover {
+  background: #172554 !important;
+}
+
+/* Fairy Meadows Page Accent: Alpine Fir & Nanga Glacier */
+body.theme-fairymeadows .inner-page-header {
+  background: linear-gradient(135deg, #14532D 0%, #0F172A 100%) !important;
+}
+body.theme-fairymeadows .btn-pine {
+  background: #14532D !important;
+}
+body.theme-fairymeadows .btn-pine:hover {
+  background: #052E16 !important;
+}
+
+/* Swat Valley Page Accent: Emerald Meadow */
+body.theme-swat .inner-page-header {
+  background: linear-gradient(135deg, #047857 0%, #064E3B 100%) !important;
+}
+body.theme-swat .btn-pine {
+  background: #047857 !important;
+}
+body.theme-swat .btn-pine:hover {
+  background: #064E3B !important;
+}
+
+/* K2 Trekking Accent: Extreme Mountain Crimson */
+body.theme-k2 .inner-page-header {
+  background: linear-gradient(135deg, #991B1B 0%, #0F172A 100%) !important;
+}
+body.theme-k2 .btn-pine {
+  background: #991B1B !important;
+}
+body.theme-k2 .btn-pine:hover {
+  background: #7F1D1D !important;
+}
+
+/* Valley Telemetry Strip */
+.telemetry-bar {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  padding: 16px 24px;
+  box-shadow: var(--shadow-sm);
+  margin-top: -30px;
+  position: relative;
+  z-index: 10;
+}
+.telemetry-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.telemetry-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+body.theme-skardu .telemetry-icon { background: rgba(30, 58, 138, 0.1); color: #1E3A8A; }
+body.theme-hunza .telemetry-icon { background: rgba(217, 119, 6, 0.12); color: #D97706; }
+body.theme-fairymeadows .telemetry-icon { background: rgba(20, 83, 45, 0.1); color: #14532D; }
+body.theme-swat .telemetry-icon { background: rgba(4, 120, 87, 0.1); color: #047857; }
+body.theme-k2 .telemetry-icon { background: rgba(153, 27, 27, 0.1); color: #991B1B; }
+
+/* ==========================================================================
+   CALCULATOR CARD (Clean High-Contrast)
+   ========================================================================== */
+.calculator-clean-card {
+  background: #FFFFFF !important;
+  border: 1px solid var(--border-medium) !important;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem;
+}
+
+.output-price-box {
+  background: #064E3B !important;
+  color: #FFFFFF !important;
+  border-radius: 20px;
+  padding: 2.2rem;
+  text-align: center;
+}
+
+.output-price-box .price-huge {
+  font-family: var(--font-mono);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: #FFFFFF !important;
+  margin: 0.5rem 0;
+}
+
+.output-price-box .price-huge span {
+  color: #34D399 !important;
+}
+
+.clean-pill-option {
+  background: #F8FAFC !important;
+  border: 1px solid var(--border-medium) !important;
+  color: var(--text-main) !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.clean-pill-option.active,
+.clean-pill-option:hover {
+  background: #ECFDF5 !important;
+  border-color: #047857 !important;
+  color: #047857 !important;
+}
+
+/* ==========================================================================
+   ACCORDIONS (Itinerary Timelines & FAQs - High Contrast)
+   ========================================================================== */
+.itinerary-accordion .accordion-item {
+  background: #FFFFFF !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 14px !important;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.itinerary-accordion .accordion-button {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 1.2rem;
+  box-shadow: none !important;
+}
+
+.itinerary-accordion .accordion-button:not(.collapsed) {
+  background: #ECFDF5 !important;
+  color: #047857 !important;
+  border-bottom: 1px solid #D1FAE5 !important;
+}
+
+.itinerary-accordion .accordion-body {
+  color: #334155 !important;
+  font-size: 0.95rem;
+  padding: 1.4rem;
+  line-height: 1.7;
+}
+
+/* Checklist Items */
+.checklist-item {
+  background: #F8FAFC !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  color: #0F172A !important;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.checklist-item:hover {
+  background: #ECFDF5 !important;
+  border-color: #A7F3D0 !important;
+}
+
+.checklist-item.checked {
+  background: #F0FDF4 !important;
+  border-color: #34D399 !important;
+}
+
+.checklist-item.checked span {
+  text-decoration: line-through;
+  color: #94A3B8 !important;
+}
+
+/* ==========================================================================
+   FOOTER (High-Contrast Slate)
+   ========================================================================== */
+.footer-clean,
+.footer-deosai {
+  background: #0F172A !important;
+  color: #94A3B8 !important;
+  padding: 70px 0 30px 0;
+  font-size: 0.92rem;
+}
+
+.footer-clean h5, .footer-clean h6,
+.footer-deosai h5, .footer-deosai h6,
+.footer-heading {
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+
+.footer-clean a,
+.footer-deosai a,
+.footer-link {
+  color: #CBD5E1 !important;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.6rem;
+  transition: color 0.2s;
+}
+
+.footer-clean a:hover,
+.footer-deosai a:hover,
+.footer-link:hover {
+  color: #34D399 !important;
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-floating-clean,
+.whatsapp-btn-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366 !important;
+  color: #FFFFFF !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-floating-clean:hover,
+.whatsapp-btn-float:hover {
+  transform: scale(1.1);
+  color: #FFFFFF !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+  .arched-carousel-wrapper {
+    height: 220px;
+  }
+  .curved-card {
+    width: 130px;
+    height: 180px;
+  }
+  .curved-card.slot-far-left {
+    transform: translate(-190px, 30px) rotate(-15deg) scale(0.75);
+  }
+  .curved-card.slot-left {
+    transform: translate(-95px, 10px) rotate(-8deg) scale(0.85);
+  }
+  .curved-card.slot-center {
+    transform: translate(0px, 0px) rotate(0deg) scale(1.05);
+  }
+  .curved-card.slot-right {
+    transform: translate(95px, 10px) rotate(8deg) scale(0.85);
+  }
+  .curved-card.slot-far-right {
+    transform: translate(190px, 30px) rotate(15deg) scale(0.75);
+  }
+}
